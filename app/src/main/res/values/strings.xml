@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Edu_Academic_Solution</string>
+    <string name="feedback">Feedback</string>
+    <string name="bonafide_request">Bonafide Request</string>
+    <string name="fees">Fees</string>
 </resources>

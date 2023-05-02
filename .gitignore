@@ -16,4 +16,4 @@ local.properties
 .idea/compiler.xml
 .gitignore
 .idea/*
-./app/build
+/app/build/*
