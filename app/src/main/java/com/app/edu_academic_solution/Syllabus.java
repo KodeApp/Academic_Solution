@@ -7,7 +7,7 @@ import android.widget.Button;
 
 public class Syllabus extends AppCompatActivity {
 
-    Button uploadBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
