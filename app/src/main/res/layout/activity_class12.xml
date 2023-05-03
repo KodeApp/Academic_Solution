@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SYLLABUS"
+                    android:text="D.P.P"
                     android:textStyle="bold"
                     android:textAlignment="center"/>
 
@@ -127,7 +127,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SYLLABUS"
+                    android:text="ATTENDANCE"
                     android:textAlignment="center"
                     android:textStyle="bold" />
 
@@ -162,7 +162,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SYLLABUS"
+                    android:text="NOTES"
                     android:textStyle="bold"
                     android:textAlignment="center"/>
 
@@ -197,7 +197,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SYLLABUS"
+                    android:text="EXAM"
                     android:textStyle="bold"
                     android:textAlignment="center"/>
 

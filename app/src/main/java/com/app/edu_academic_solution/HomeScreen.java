@@ -36,4 +36,16 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
     }
+
+    public void bonafideBtn(View view) {
+
+        Intent intent = new Intent(this,Bonafide.class);
+        startActivity(intent);
+    }
+
+    public void feedbackBtn(View view) {
+        Intent intent = new Intent(this,Feedback.class);
+        startActivity(intent);
+
+    }
 }

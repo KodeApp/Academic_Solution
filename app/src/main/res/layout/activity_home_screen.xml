@@ -138,7 +138,7 @@
         android:gravity="center"
         android:text="Fees"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
     <TextView
         android:layout_width="300dp"
@@ -152,8 +152,9 @@
         android:background="@drawable/rounded_corner"
         android:gravity="center"
         android:text="Bonafied Request"
+        android:onClick="bonafideBtn"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
     <TextView
         android:layout_width="300dp"
@@ -167,8 +168,9 @@
         android:background="@drawable/rounded_corner"
         android:gravity="center"
         android:text="Feedback"
+        android:onClick="feedbackBtn"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
 
 </RelativeLayout>

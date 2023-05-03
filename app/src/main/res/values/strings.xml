@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Edu_Academic_Solution</string>
+    <string name="reason">Reason</string>
+    <string name="class_name">Class Name</string>
+    <string name="name">Name</string>
+    <string name="feedback">Feedback</string>
+    <string name="submit">SUBMIT</string>
 </resources>
