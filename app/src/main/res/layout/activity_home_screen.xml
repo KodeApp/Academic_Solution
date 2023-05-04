@@ -126,7 +126,7 @@
 
 
     <TextView
-        android:id="@+id/feesTextField"
+        android:id="@+id/feesTextView"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@+id/gridChooseClass"
@@ -142,8 +142,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/feesTextField"
-        android:id="@+id/feedbackTextField"
+        android:layout_below="@+id/feesTextView"
+        android:id="@+id/feedbackTextView"
         android:layout_centerInParent="true"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
@@ -155,8 +155,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/bonafideRequestTextField"
-        android:layout_below="@+id/feedbackTextField"
+        android:id="@+id/bonafideRequestTextView"
+        android:layout_below="@+id/feedbackTextView"
         android:layout_centerInParent="true"
         android:background="@drawable/rounded_corner"
         android:gravity="center"

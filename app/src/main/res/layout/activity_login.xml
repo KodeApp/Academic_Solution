@@ -50,14 +50,14 @@
                 android:background="@android:drawable/btn_dropdown" />
 
             <EditText
-                android:id="@+id/userName"
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="@string/username"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -68,9 +68,9 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -82,8 +82,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/purple"
-                android:text="LOGIN"
-                android:onClick="loginBtn"
+                android:text="@string/login"
+                android:onClick="login"
                 android:textSize="18sp"
                 app:cardCornerRadius="20dp" />
 
