@@ -38,7 +38,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Class11th"
+            android:name=".Class11"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

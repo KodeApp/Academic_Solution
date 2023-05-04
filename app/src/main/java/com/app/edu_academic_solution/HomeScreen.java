@@ -6,7 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomeScreen extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class HomeScreen extends AppCompatActivity {
         classSecond = findViewById(R.id.classSecond);
 
         classFirst.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeScreen.this,Class11th.class);
+            Intent intent = new Intent(HomeScreen.this, Class11.class);
             startActivity(intent);
         });
 
