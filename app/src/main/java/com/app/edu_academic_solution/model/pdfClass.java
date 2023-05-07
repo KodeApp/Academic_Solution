@@ -1,8 +1,9 @@
-package com.app.edu_academic_solution;
+package com.app.edu_academic_solution.model;
 
 public class pdfClass {
 
     public  String name, url;
+    public int getName;
 
     public  pdfClass(){
 

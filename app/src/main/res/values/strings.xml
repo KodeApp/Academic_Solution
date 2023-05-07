@@ -5,4 +5,12 @@
     <string name="name">Name</string>
     <string name="feedback">Feedback</string>
     <string name="submit">SUBMIT</string>
+    <string name="pdf_file_name">PDF File Name</string>
+    <string name="select_file">Select_file</string>
+    <string name="hint">hint</string>
+    <string name="upload_pdf">Upload PDF</string>
+    <string name="view_pdf_files">View PDF Files</string>
+    <string name="pdf_name">PDF Name</string>
+    <string name="todo">TODO</string>
+    <string name="img">TODO</string>
 </resources>

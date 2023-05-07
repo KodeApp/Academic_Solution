@@ -19,17 +19,17 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <ListView
-        android:id="@+id/listView"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/textSyllabus"
+        android:id="@+id/pdfrecycleView"/>
 
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:padding="8dp" />
+
+
+
+
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -42,6 +42,17 @@
         android:clickable="true"
         app:backgroundTint="@color/purple"
         app:srcCompat="@drawable/ic_baseline_add_24" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="33dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="197dp"
+        android:layout_marginBottom="190dp"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>
