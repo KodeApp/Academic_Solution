@@ -13,4 +13,9 @@
     <string name="pdf_name">PDF Name</string>
     <string name="todo">TODO</string>
     <string name="img">TODO</string>
+    <string name="bonafide_request">Bonafide Request</string>
+    <string name="fees">Fees</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
 </resources>
