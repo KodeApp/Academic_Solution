@@ -47,82 +47,9 @@ public class Syllabus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_syllabus);
 
+        floatingActionButton=findViewById(R.id.uploadBtn);
 
 
-//
-//        floatingActionButton = findViewById(R.id.uploadBtn);
-//
-//
-//        uploads=new ArrayList<>();
-//
-//        viewAllFiles();
-//
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-//
-//                pdfClass pdfupload=uploads.get(i);
-//
-//                Intent intent=new Intent(Intent.ACTION_VIEW);
-//                intent.setType("application/pdf");
-//                intent.setData(Uri.parse(pdfupload.getUrl()));
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//
-//
-//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent =new Intent(getApplicationContext(),UploadPDF.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
-//
-//    private void viewAllFiles() {
-//
-//        databaseReference= FirebaseDatabase.getInstance().getReference("Uploads");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot postsnapshot:snapshot.getChildren()){
-//                    pdfClass pdfClass=postsnapshot.getValue(com.app.edu_academic_solution.model.pdfClass.class);
-//
-//                    uploads.add(pdfClass);
-//
-//                }
-//                String[] Uploads=new String[uploads.size()];
-//                for (int i=0;i<Uploads.length;i++){
-//                    Uploads[i]=uploads.get(i).getName();
-//                }
-//                ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(),
-//                        android.R.layout.simple_list_item_1,Uploads){
-//
-//
-//
-//                    @NonNull
-//                    @Override
-//                    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//                         View view=super.getView(position,convertView,parent);
-//                        TextView text=(TextView) view.findViewById(android.R.id.text1);
-//                        text.setTextColor(Color.BLACK);
-//                        text.setTextSize(22);
-//
-//                        return view;
-//
-//                    }
-//                };
-//                listView.setAdapter(adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
 
         displayPdfs();
 
@@ -161,28 +88,14 @@ public class Syllabus extends AppCompatActivity {
             }
         });
 
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Syllabus.this,UploadPDF.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 
     }
-//
-//    private void showPdf() {
-//        FirebaseRecyclerOptions<pdfClass> options = new FirebaseRecyclerOptions.Builder<pdfClass>()
-//                .setQuery(query, pdfClass.class)
-//                .build();
-//        FirebaseRecyclerAdapter<pdfClass, Adapter> adapter = new FirebaseRecyclerAdapter<pdfClass, Adapter>(options){
-//
-//            @Override
-//            protected void onBindViewHolder(@NonNull Adapter holder, int position, @NonNull pdfClass model) {
-//
-//            }
-//
-//            @NonNull
-//            @Override
-//            public Adapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pdf_item,parent,false);
-//                return new Adapter(view);
-//            }
-//
-//        };
-
-  //  }
-}
