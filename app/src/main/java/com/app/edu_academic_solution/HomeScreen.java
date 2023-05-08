@@ -13,12 +13,12 @@ public class HomeScreen extends AppCompatActivity {
 
     CardView classFirst,classSecond;
     boolean isTeacher = false;
-    FirebaseUser user;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = getUserData();
+        currentUser = getUserData();
         isTeacher = getIsTeacher();
 
         setContentView(R.layout.activity_home_screen);
@@ -42,7 +42,7 @@ public class HomeScreen extends AppCompatActivity {
         });
 
         classSecond.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeScreen.this,class12.class);
+            Intent intent = new Intent(HomeScreen.this,Class12.class);
             startActivity(intent);
 
         });

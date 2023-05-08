@@ -96,9 +96,9 @@ public class LoginActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 Log.d("LOGIN", "Login successful");
                 Log.d("LOGIN", "Moving to HomeScreen");
-                FirebaseUser userData = firebaseAuth.getCurrentUser();
+                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                 Intent intent = new Intent(this, HomeScreen.class);
-                intent.putExtra("userData", userData);
+                intent.putExtra("userData", currentUser);
                 intent.putExtra("isTeacher", currentRole.equals("teacher"));
                 startActivity(intent);
             } else {
