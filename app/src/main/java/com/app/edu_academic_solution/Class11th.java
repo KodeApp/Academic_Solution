@@ -28,4 +28,9 @@ public class Class11th extends AppCompatActivity {
 
 
     }
+
+    public void attendanceOk(View view) {
+        Intent intent = new Intent(this,Attendance.class);
+        startActivity(intent);
+    }
 }

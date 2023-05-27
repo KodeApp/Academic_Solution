@@ -123,6 +123,7 @@
                 <ImageView
                     android:layout_width="137dp"
                     android:layout_height="109dp"
+                    android:onClick="attendanceOk"
                     android:src="@drawable/attendance" />
 
                 <TextView
