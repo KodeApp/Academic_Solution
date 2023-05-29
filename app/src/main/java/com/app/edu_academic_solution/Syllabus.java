@@ -1,22 +1,21 @@
 package com.app.edu_academic_solution;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.app.edu_academic_solution.model.pdfClass;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,13 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Syllabus extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton;
-    RecyclerView pdfRecycleView;
+    ListView pdfListView;
     private DatabaseReference pRef;
     //private DatabaseReference databaseReference;
     List<pdfClass> uploads;
@@ -42,51 +42,57 @@ public class Syllabus extends AppCompatActivity {
     FirebaseStorage storage= FirebaseStorage.getInstance();
     StorageReference storageReference= storage.getReference();
 
+    List<String> pdfNames = new ArrayList<>();
+    List<String> pdfUrls = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_syllabus);
 
         floatingActionButton=findViewById(R.id.uploadBtn);
-
-
-
         displayPdfs();
-
-
-
     }
-
     private void displayPdfs() {
-
         pRef = FirebaseDatabase.getInstance().getReference().child("Uploads");
-        pdfRecycleView = findViewById(R.id.pdfrecycleView);
-        pdfRecycleView.setHasFixedSize(true);
-        pdfRecycleView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
+        pdfListView = findViewById(R.id.pdfListView);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        query = pRef.orderByChild("name");
-        //we will request the file with the name, if name  exists then it will show in thw recycleView
-
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        pRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    progressBar.setVisibility(View.GONE);
-                //    showPdf();
-                }else {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(Syllabus.this, ":", Toast.LENGTH_SHORT).show();
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    String pdfName = childSnapshot.child("name").getValue(String.class);
+                    String pdfUrl = childSnapshot.child("url").getValue(String.class);
+                    pdfUrls.add(pdfUrl);
+                    pdfNames.add(pdfName);
                 }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Syllabus.this, android.R.layout.simple_list_item_1, pdfNames);
+                pdfListView.setAdapter(adapter);
+                progressBar.setVisibility(View.GONE);
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
+
+       pdfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+               Intent intent = new Intent(Intent.ACTION_VIEW);
+               intent.setDataAndType(Uri.parse(pdfUrls.get(position)), "application/pdf");
+               intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               try {
+                   startActivity(intent);
+               } catch (ActivityNotFoundException e) {
+                   Toast.makeText(Syllabus.this, "No PDF Viewer found", Toast.LENGTH_SHORT).show();
+               }
+           }
+       });
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
