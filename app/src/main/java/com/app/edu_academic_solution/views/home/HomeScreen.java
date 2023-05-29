@@ -1,4 +1,4 @@
-package com.app.edu_academic_solution;
+package com.app.edu_academic_solution.views.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -7,7 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import com.google.firebase.auth.FirebaseAuth;
+
+import com.app.edu_academic_solution.Bonafide;
+import com.app.edu_academic_solution.Feedback;
+import com.app.edu_academic_solution.R;
+import com.app.edu_academic_solution.views.student.class11.Class11;
+import com.app.edu_academic_solution.views.student.class12.Class12;
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomeScreen extends AppCompatActivity {
@@ -38,24 +43,24 @@ public class HomeScreen extends AppCompatActivity {
         classSecond = findViewById(R.id.classSecond);
 
         classFirst.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeScreen.this,Class11th.class);
+            Intent intent = new Intent(HomeScreen.this, Class11.class);
             startActivity(intent);
         });
 
         classSecond.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeScreen.this,class12.class);
+            Intent intent = new Intent(HomeScreen.this, Class12.class);
             startActivity(intent);
 
         });
     }
     public void bonafideBtn(View view) {
 
-        Intent intent = new Intent(this,Bonafide.class);
+        Intent intent = new Intent(this, Bonafide.class);
         startActivity(intent);
     }
 
     public void feedbackBtn(View view) {
-        Intent intent = new Intent(this,Feedback.class);
+        Intent intent = new Intent(this, Feedback.class);
         startActivity(intent);
 
     }

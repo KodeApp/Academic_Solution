@@ -1,4 +1,4 @@
-package com.app.edu_academic_solution;
+package com.app.edu_academic_solution.views.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.app.edu_academic_solution.R;
 import com.google.firebase.FirebaseApp;
 
-import java.text.Collator;
 import com.google.firebase.appcheck.*;
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 

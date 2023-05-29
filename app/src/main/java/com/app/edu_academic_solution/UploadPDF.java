@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.app.edu_academic_solution.model.pdfClass;
+import com.app.edu_academic_solution.views.student.common.Syllabus;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -184,7 +185,7 @@ public class UploadPDF extends AppCompatActivity {
 //    }
 
     public void viewPDF(View view) {
-        Intent intent = new Intent(getApplicationContext(),Syllabus.class);
+        Intent intent = new Intent(getApplicationContext(), Syllabus.class);
         startActivity(intent);
 
     }

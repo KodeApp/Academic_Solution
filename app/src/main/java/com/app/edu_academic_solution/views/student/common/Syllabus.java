@@ -1,10 +1,9 @@
-package com.app.edu_academic_solution;
+package com.app.edu_academic_solution.views.student.common;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.app.edu_academic_solution.R;
+import com.app.edu_academic_solution.UploadPDF;
 import com.app.edu_academic_solution.model.pdfClass;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -97,7 +98,7 @@ public class Syllabus extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(Syllabus.this,UploadPDF.class);
+                Intent intent =new Intent(Syllabus.this, UploadPDF.class);
                 startActivity(intent);
             }
         });

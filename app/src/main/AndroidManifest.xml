@@ -42,28 +42,28 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Syllabus"
+            android:name=".views.student.common.Syllabus"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".class12"
+            android:name=".views.student.class12.Class12"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Class11th"
+            android:name=".views.student.class11.Class11"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HomeScreen"
+            android:name=".views.home.HomeScreen"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -77,14 +77,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".views.home.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".views.home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
