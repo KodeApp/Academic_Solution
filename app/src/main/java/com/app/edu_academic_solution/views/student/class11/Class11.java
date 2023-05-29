@@ -1,4 +1,4 @@
-package com.app.edu_academic_solution;
+package com.app.edu_academic_solution.views.student.class11;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Class11th extends AppCompatActivity {
+import com.app.edu_academic_solution.R;
+import com.app.edu_academic_solution.views.student.common.Syllabus;
+
+public class Class11 extends AppCompatActivity {
 
     CardView syllabus11;
 
@@ -21,7 +24,7 @@ public class Class11th extends AppCompatActivity {
         syllabus11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Class11th.this,Syllabus.class);
+                Intent intent = new Intent(Class11.this, Syllabus.class);
                 startActivity(intent);
             }
         });

@@ -1,10 +1,12 @@
-package com.app.edu_academic_solution;
+package com.app.edu_academic_solution.views.student.class12;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class class12 extends AppCompatActivity {
+import com.app.edu_academic_solution.R;
+
+public class Class12 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
