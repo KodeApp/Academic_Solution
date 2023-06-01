@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="sheetList" type="id" />
+    <item name="date_list_item" type="id" />
+    <item name="subjectTv" type="id" />
+    <item name="classTv" type="id" />
+    <item name="toolbarMain" type="id" />
+    <item name="fabName" type="id" />
+    <item name="recyView" type="id" />
+    <item name="toolbarStudent" type="id" />
+    <item name="studentRecycler" type="id" />
+    <item name="tableLayout" type="id" />
+</resources>

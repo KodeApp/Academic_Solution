@@ -18,4 +18,15 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">LOGIN</string>
+    <string name="title">Title</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="view_attendance">View Attendance</string>
+    <string name="daily_attendance">Daily Attendance</string>
+    <string name="remove_student">Remove Student</string>
+    <string name="add_student">Add Student</string>
+    <string name="_01" />
+    <string name="samrudhi_pawar" />
+    <string name="p" />
+    <string name="action_settings" />
+    <string name="notes">NOTES</string>
 </resources>

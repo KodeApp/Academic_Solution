@@ -1,5 +1,9 @@
 package com.app.edu_academic_solution;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,14 +16,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.app.edu_academic_solution.model.pdfClass;
+import com.app.edu_academic_solution.views.student.common.DPP;
+import com.app.edu_academic_solution.views.student.common.Notes;
 import com.app.edu_academic_solution.views.student.common.Syllabus;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -28,28 +31,36 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.util.Objects;
 
-public class UploadPDF extends AppCompatActivity {
+public class UploadPDF1 extends AppCompatActivity {
 
-    Button uploadButton, viewButton;
-    EditText pdfName;
+    Button uploadButton1, viewButton1;
+    MaterialTextView pdfName;
 
-   StorageReference storageReference;
-   DatabaseReference databaseReference;
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
+
+    String std;
+    String page;
+    String db_url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_pdf);
+        setContentView(R.layout.activity_upload_pdf1);
 
-        uploadButton = findViewById(R.id.uploadButton);
-        viewButton = findViewById(R.id.viewButton);
+        uploadButton1 = findViewById(R.id.uploadButton1);
+        viewButton1 = findViewById(R.id.viewButton1);
         pdfName = findViewById(R.id.pdfName);
 
+        std = getIntent().getStringExtra("class");
+        page = getIntent().getStringExtra("page");
+        db_url = std + "/" + page;
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
+        databaseReference = FirebaseDatabase.getInstance().getReference(db_url);
 
-        uploadButton.setEnabled(false);
+        uploadButton1.setEnabled(false);
 
         pdfName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +73,6 @@ public class UploadPDF extends AppCompatActivity {
     }
 
     private void selectFiles() {
-
 
         Intent intent = new Intent();
         intent.setType("application/pdf");
@@ -93,15 +103,15 @@ public class UploadPDF extends AppCompatActivity {
 
                     }
                 } finally {
-                   cursor.close();
+                    cursor.close();
                 }
             } else if (uriString.startsWith("file://")){
                 displayName = myFile.getName();
             }
-            uploadButton.setEnabled(true);
+            uploadButton1.setEnabled(true);
             pdfName.setText(displayName);
 
-            uploadButton.setOnClickListener(new View.OnClickListener() {
+            uploadButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Uploadfiles(data.getData());
@@ -116,7 +126,7 @@ public class UploadPDF extends AppCompatActivity {
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
 
-        final StorageReference reference=storageReference.child("Uploads/"+System.currentTimeMillis()+".pdf");
+        final StorageReference reference=storageReference.child(db_url + "/" + System.currentTimeMillis() + ".pdf");
         reference.putFile(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -129,7 +139,7 @@ public class UploadPDF extends AppCompatActivity {
                         pdfClass pdfClass=new pdfClass(pdfName.getText().toString(),uri.toString());
                         databaseReference.child(databaseReference.push().getKey()).setValue(pdfClass);
 
-                        Toast.makeText(UploadPDF.this, "File Uploaded Successfully!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UploadPDF1.this, "File Uploaded Successfully!!", Toast.LENGTH_SHORT).show();
 
                         progressDialog.dismiss();
 
@@ -148,46 +158,23 @@ public class UploadPDF extends AppCompatActivity {
     }
 
 
-//    private void UploadFiles(Uri data) {
-//        final ProgressDialog progressDialog = new ProgressDialog(this);
-//        progressDialog.setTitle("Uploading...");
-//        progressDialog.show();
-//
-//        StorageReference reference=storageReference.child("Uploads/"+System.currentTimeMillis()+".pdf");
-//        reference.putFile(data)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                        Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
-//                        while (!uriTask.isComplete());
-//                        Uri uri = uriTask.getResult();
-//
-//                        pdfClass pdfClass=new pdfClass(pdfName.getText().toString(),uri.toString());
-//                        databaseReference.child(databaseReference.push().getKey()).setValue(pdfClass);
-//
-//                        Toast.makeText(UploadPDF.this, "File Uploaded!!", Toast.LENGTH_SHORT).show();
-//
-//                        progressDialog.dismiss();
-//
-//                    }
-//                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-//
-//                        double progress=(100.0*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-//                        progressDialog.setMessage("Upload:"+(int)progress+"%");
-//
-//
-//
-//                    }
-//                });
-//
-//    }
 
     public void viewPDF(View view) {
-        Intent intent = new Intent(getApplicationContext(), Syllabus.class);
-        startActivity(intent);
+        if (Objects.equals(page, "Notes")) {
+            Intent intent = new Intent(getApplicationContext(), Notes.class);
+            intent.putExtra("class", std);
+            startActivity(intent);
+        } else if (Objects.equals(page, "Syllabus")) {
+            Intent intent = new Intent(getApplicationContext(), Syllabus.class);
+            intent.putExtra("class", std);
+            startActivity(intent);
+        } else if (Objects.equals(page, "DPP")) {
+            Intent intent = new Intent(getApplicationContext(), DPP.class);
+            intent.putExtra("class", std);
+            startActivity(intent);
+
+        }
+
 
     }
 }

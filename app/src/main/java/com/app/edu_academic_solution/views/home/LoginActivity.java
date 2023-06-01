@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser userData = firebaseAuth.getCurrentUser();
                 Intent intent = new Intent(this, HomeScreen.class);
                 intent.putExtra("userData", userData);
+                intent.putExtra("role", currentRole);
                 intent.putExtra("isTeacher", currentRole.equals("teacher"));
                 startActivity(intent);
             } else {

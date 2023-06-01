@@ -34,18 +34,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Syllabus extends AppCompatActivity {
+public class Notes extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton;
     ListView pdfListView;
     private DatabaseReference pRef;
     //private DatabaseReference databaseReference;
-    List<pdfClass> uploads;
+    List<pdfClass> Notes;
     Query query;
-    ProgressBar progressBar;
+    ProgressBar progressBar1;
     FirebaseStorage storage= FirebaseStorage.getInstance();
     boolean isTeacher;
-    StorageReference storageReference= storage.getReference();
+
+    SharedPreferences sharedPreferences;
 
     List<String> pdfNames = new ArrayList<>();
     List<String> pdfUrls = new ArrayList<>();
@@ -53,10 +54,10 @@ public class Syllabus extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_syllabus);
-        isTeacher = getIntent().getBooleanExtra("isTeacher", false);
+        setContentView(R.layout.activity_notes);
 
-        floatingActionButton=findViewById(R.id.uploadBtn);
+        isTeacher = getIntent().getBooleanExtra("isTeacher", false);
+        floatingActionButton=findViewById(R.id.uploadBtn1);
         if (!isTeacher) {
             floatingActionButton.setVisibility(View.GONE);
         } else {
@@ -66,12 +67,12 @@ public class Syllabus extends AppCompatActivity {
     }
     private void displayPdfs() {
         String std = getIntent().getStringExtra("class");
-        String db_url = std + "/" + "Syllabus";
+        String db_url = std + "/" + "Notes";
         pRef = FirebaseDatabase.getInstance().getReference().child(db_url);
 
         pdfListView = findViewById(R.id.pdfListView);
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar1 = findViewById(R.id.progressBar1);
+        progressBar1.setVisibility(View.VISIBLE);
 
         pRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -82,42 +83,41 @@ public class Syllabus extends AppCompatActivity {
                     pdfUrls.add(pdfUrl);
                     pdfNames.add(pdfName);
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Syllabus.this, android.R.layout.simple_list_item_1, pdfNames);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Notes.this, android.R.layout.simple_list_item_1, pdfNames);
                 pdfListView.setAdapter(adapter);
-                progressBar.setVisibility(View.GONE);
+                progressBar1.setVisibility(View.GONE);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-       pdfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        pdfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-           @Override
-           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-               Intent intent = new Intent(Intent.ACTION_VIEW);
-               intent.setDataAndType(Uri.parse(pdfUrls.get(position)), "application/pdf");
-               intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-               try {
-                   startActivity(intent);
-               } catch (ActivityNotFoundException e) {
-                   Toast.makeText(Syllabus.this, "No PDF Viewer found", Toast.LENGTH_SHORT).show();
-               }
-           }
-       });
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.parse(pdfUrls.get(position)), "application/pdf");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                try {
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(Notes.this, "No PDF Viewer found", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(Syllabus.this, UploadPDF1.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(Notes.this, UploadPDF1.class);
                 intent.putExtra("class", std);
-                intent.putExtra("isTeacher", isTeacher);
-                intent.putExtra("page", "Syllabus");
+                intent.putExtra("page", "Notes");
                 startActivity(intent);
             }
         });
     }
 
 
-    }
+}

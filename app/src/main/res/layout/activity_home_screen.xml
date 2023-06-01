@@ -138,12 +138,13 @@
 
 
     <TextView
+        android:id="@+id/feedbackTextView"
+        android:onClick="feedbackBtn"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/feesTextView"
-        android:id="@+id/feedbackTextView"
         android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
         android:text="@string/feedback"
@@ -151,16 +152,16 @@
         android:textSize="25sp" />
 
     <TextView
+        android:id="@+id/bonafideRequestTextView"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/bonafideRequestTextView"
         android:layout_below="@+id/feedbackTextView"
         android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
-        android:text="Bonafied Request"
         android:onClick="bonafideBtn"
+        android:text="Bonafied Request"
         android:textColor="@color/white"
         android:textSize="25sp" />
 
