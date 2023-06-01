@@ -29,6 +29,7 @@
         android:hint="@string/name">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bonafideRequestStudentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -48,6 +49,7 @@
        android:id="@+id/edtClass">
 
        <com.google.android.material.textfield.TextInputEditText
+           android:id="@+id/bonafideRequestStudentClassName"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_margin="20dp"
@@ -67,6 +69,7 @@
         app:counterMaxLength="1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bonafideRequestStudentReason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -83,15 +86,17 @@
 
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/bonafideRequestButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/purple"
-        android:text="SUBMIT"
-        android:layout_margin="20dp"
-        android:onClick="submitBtn"
         android:layout_below="@+id/edtReason"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/purple"
+        android:onClick="submitBtn"
+        android:text="SUBMIT"
         android:textSize="18sp"
         app:cardCornerRadius="20dp" />
 

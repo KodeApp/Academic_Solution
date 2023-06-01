@@ -55,10 +55,19 @@ public class StudentAttendance<StudentItems> extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new StudentAdapter(this,studentItems);
+        adapter= new StudentAdapter(this,studentItems);
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListerner(position1->changeStatus(position));
+        adapter.setOnItemClickListerner(new StudentAdapter.onItemClickListerner() {
+            @Override
+            public void onClick(int position) {
+                Log.i("Value", "Position inside onClick = " + position);
+                changeStatus(position);
+
+            }
+        });
+        Log.i("Value", "Position outside onClick = " + position);
         loadStatusData();
+
     }
 
     private void loadData() {
@@ -69,6 +78,7 @@ public class StudentAttendance<StudentItems> extends AppCompatActivity {
             int roll = cursor.getInt(cursor.getColumnIndex(DbHelper.STUDENT_ROLL_KEY));
             String name = cursor.getString(cursor.getColumnIndex(DbHelper.STUDENT_NAME_KEY));
             studentItems.add(new StudentItem(sid, roll, name));
+
             Log.i("Value", "sid: " + sid + " roll: " + roll + " name: " + name);
         }
         cursor.close();
@@ -123,7 +133,6 @@ public class StudentAttendance<StudentItems> extends AppCompatActivity {
             String status = dbHelper.getStatus(studentItems.getSid(),calendar.getDate());
             if (status!=null) studentItems.setStatus(status);
             else studentItems.setStatus("");
-
 
         }
         adapter.notifyDataSetChanged();
